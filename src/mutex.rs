@@ -144,7 +144,7 @@ impl<T> BusMutex for XtensaMutex<T> {
 
     fn lock<R, F: FnOnce(&mut Self::Bus) -> R>(&self, f: F) -> R {
         //xtensa_lx::interrupt::free(|_| f(&mut (*self.0.lock())))
-        xtensa_lx::interrupt::free(|_| f(&mut (self.lock()) )
+        xtensa_lx::interrupt::free(|_| f(&mut (self.lock())))
     }
 }
 
